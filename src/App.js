@@ -1,7 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './svg/logo.svg';
+import './App.scss';
+import WebFont from 'webfontloader';
 
 function App() {
+
+  WebFont.load({
+    google: {
+      families: ['Inter', 'Montserrat']
+    }
+  });
+
   return (
     <div className="App">
       <header className="App-header">
