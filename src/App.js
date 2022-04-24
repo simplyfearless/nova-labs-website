@@ -1,7 +1,10 @@
 import './App.scss';
 import WebFont from 'webfontloader';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Navigation from './components/global/navigation.js';
+
+import Navigation from './components/navigation/navigation.js';
+import Footer from './components/footer/footer.js';
+
 import Home from './components/pages/home.js';
 
 function App() {
@@ -19,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>
+          <Footer />
         </Router>,
     </div>
   );

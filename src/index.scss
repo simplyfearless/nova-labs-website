@@ -6,3 +6,67 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@mixin generate-grid($columns, $size: '') {
+  @for $i from 1 through $columns {
+    $width: calc(100% / ( #{$columns} / #{$i} ));
+    @if($size == '') {
+      .col-#{$i}-#{$columns} {
+        width: $width;
+      }
+      .col-offset-#{$i}-#{$columns} {
+        margin-left: $width;
+      }
+    }
+    @else {
+      .col-#{$size}-#{$i}-#{$columns} {
+        width: $width;
+      }
+      .col-#{$size}-offset-#{$i}-#{$columns} {
+        margin-left: $width;
+      }
+    }
+  }
+}
+
+@include generate-grid(16);
+
+@media (min-width: 768px) {
+  @include generate-grid(16, 'md');
+}
+
+@media (min-width: 1200px) {
+  @include generate-grid(16, 'lg'); 
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[class*="col-"] {
+  float: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+  min-height: 1px;
+}
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 460px;
+  @media(min-width: 768px) {
+    max-width: 720px;
+  }
+  @media(min-width: 992px) {
+    max-width: 900px;
+  }
+  @media(min-width: 1200px) {
+    max-width: 1140px;
+  }
+  @media(min-width: 1440px) {
+    max-width: 1200px;
+  }
+}
